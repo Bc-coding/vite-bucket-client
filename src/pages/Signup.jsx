@@ -25,16 +25,40 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { Redirect } from "react-router";
 import { SIGNUP } from "../queries";
+import { useHistory } from "react-router-dom";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
 const Signup = () => {
+  let history = useHistory();
+
   const [showPassword, setShowPassword] = useState(false);
 
   // Mutation query for login user method
-  const [loginUser, { loading, data, error: signupError }] =
-    useMutation(SIGNUP);
+  const [signupUser, { loading, data: signupData, error: signupError }] =
+    useMutation(SIGNUP, {
+      onCompleted: signupData => {
+        if (signupError) {
+          console.log(signupError);
+        }
+
+        // Store token if login is successful
+        if (signupData) {
+          const userInfo = {
+            id: signupData.signup.id,
+            userId: signupData.signup.userId,
+            name: signupData.signup.name,
+            email: signupData.signup.email,
+          };
+
+          window.localStorage.setItem("user", JSON.stringify(userInfo));
+
+          // Redirect to home page
+          history.push("/login");
+        }
+      },
+    });
   const {
     register,
     handleSubmit,
@@ -43,8 +67,8 @@ const Signup = () => {
   } = useForm();
 
   const onSubmit = values => {
-    // console.log(values);
-    loginUser({
+    console.log(values);
+    signupUser({
       variables: {
         input: {
           email: values.email,
@@ -57,22 +81,7 @@ const Signup = () => {
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
-  //console.log(watch("email")); // watch input value by passing the name of it
-
-  // Store token if login is successful
-  if (data) {
-    const userInfo = {
-      id: data.signup.id,
-      userId: data.signup.userId,
-      name: data.signup.name,
-      email: data.signup.email,
-    };
-
-    window.localStorage.setItem("user", JSON.stringify(userInfo));
-
-    // Redirect to home page
-    return <Redirect to="/login" />;
-  }
+  console.log(watch("email")); // watch input value by passing the name of it
 
   return (
     <Layout>

@@ -19,8 +19,7 @@ import {
 import { FcIdea, FcOrganization, FcGlobe, FcCloseUpMode } from "react-icons/fc";
 import { UPDATE_BUCKET_LIST_BY_USER, GET_POST_BY_USER } from "../queries";
 import { useMutation, useQuery } from "@apollo/client";
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { QueryResult } from "../components/index";
 
 const UpdatePost = () => {

@@ -26,6 +26,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { Redirect } from "react-router";
 import { LOGIN_USER } from "../queries";
+import { useHistory } from "react-router-dom";
 
 import AuthContext from "../context/authContext";
 
@@ -33,6 +34,8 @@ const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
 const Login = () => {
+  let history = useHistory();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const { setIsUserLoggedIn } = useContext(AuthContext);
@@ -42,6 +45,9 @@ const Login = () => {
     useMutation(LOGIN_USER, {
       // to observe what the mutation response returns
       onCompleted: (loginData, loginError) => {
+        if (loginError) {
+          console.log(loginError);
+        }
         // Store token if login is successful
         if (loginData) {
           // console.log(loginData);
@@ -57,11 +63,7 @@ const Login = () => {
           setIsUserLoggedIn(true);
 
           // Redirect to home page
-          return <Redirect to="/" />;
-        }
-
-        if (loginError) {
-          console.log(loginError);
+          history.push("/");
         }
       },
     });
@@ -172,9 +174,9 @@ const Login = () => {
             <Box>
               <Alert status="error">
                 <AlertIcon />
-                <AlertTitle>{`${
+                {/* <AlertTitle>{`${
                   loginError.message ? "Error" : null
-                }`}</AlertTitle>
+                }`}</AlertTitle> */}
                 <AlertDescription>
                   Please ensure your email and password are correct.
                 </AlertDescription>

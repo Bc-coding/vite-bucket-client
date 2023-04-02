@@ -14,14 +14,17 @@ import {
   FormControl,
   Textarea,
   Icon,
+  useColorMode,
 } from "@chakra-ui/react";
 import { FcIdea, FcOrganization, FcGlobe, FcCloseUpMode } from "react-icons/fc";
 import { CREATE_BUCKET_LIST_BY_USER } from "../queries";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 
-const AddNewIdea = () => {
+const AddPost = () => {
   let history = useHistory();
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const [handleBucketListCreate, { data, loading, error }] = useMutation(
     CREATE_BUCKET_LIST_BY_USER,
     // to observe what the mutation response returns
@@ -60,7 +63,7 @@ const AddNewIdea = () => {
             height="100vh"
             paddingTop="80px"
             alignItems="center"
-            bg="gray.800"
+            bg={colorMode === "light" ? "white" : "gray.800"}
             borderRadius="8px"
           >
             <Stack
@@ -177,13 +180,13 @@ const AddNewIdea = () => {
   );
 };
 
-export default AddNewIdea;
+export default AddPost;
 
 const Section = styled.div({
   width: "100%",
   minHeight: "800px",
   borderRadius: "8px",
-  backgroundColor: "#B2F5EA",
+  backgroundColor: "pink",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -193,5 +196,4 @@ const Section = styled.div({
 const FormContainer = styled.div({
   width: "80%",
   borderRadius: "8px",
-  backgroundColor: "gray.700",
 });

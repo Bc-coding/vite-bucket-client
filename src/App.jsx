@@ -7,7 +7,7 @@ import BucketList from "./pages/BucketList";
 import Post from "./pages/Post";
 import AuthContext from "./context/authContext";
 
-import AddNewIdea from "./pages/AddNewIdea";
+import AddPost from "./pages/AddPost";
 import UpdatePost from "./pages/UpdatePost";
 
 import "./App.css";
@@ -36,7 +36,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/bucket-list" component={BucketList} />
-        <Route exact path="/add-new-idea" component={AddNewIdea} />
+        <Route exact path="/add-post" component={AddPost} />
         <Switch>
           <Route exact path="/post/:postId" component={Post} />
         </Switch>

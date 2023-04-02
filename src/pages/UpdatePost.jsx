@@ -14,6 +14,7 @@ import {
   FormControl,
   Textarea,
   Icon,
+  useColorMode,
 } from "@chakra-ui/react";
 import { FcIdea, FcOrganization, FcGlobe, FcCloseUpMode } from "react-icons/fc";
 import { UPDATE_BUCKET_LIST_BY_USER, GET_POST_BY_USER } from "../queries";
@@ -25,6 +26,7 @@ import { QueryResult } from "../components/index";
 const UpdatePost = () => {
   let { postId } = useParams();
   let history = useHistory();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const {
     loading: getPostLoading,
@@ -101,7 +103,7 @@ const UpdatePost = () => {
               height="100vh"
               paddingTop="80px"
               alignItems="center"
-              bg="gray.800"
+              bg={colorMode === "light" ? "white" : "gray.800"}
               borderRadius="8px"
             >
               <Stack
@@ -110,7 +112,7 @@ const UpdatePost = () => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Heading color="teal.400">Edit your bucket idea</Heading>
+                <Heading color="pink.400">Edit your bucket idea</Heading>
                 <Box minW={{ base: "90%", md: "468px" }}>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <Stack spacing={4} p="1rem" boxShadow="md">
@@ -199,7 +201,7 @@ const UpdatePost = () => {
                         borderRadius={0}
                         type="submit"
                         variant="solid"
-                        colorScheme="teal"
+                        colorScheme="pink"
                         width="full"
                         isLoading={isSubmitting}
                       >
@@ -223,7 +225,7 @@ const Section = styled.div({
   width: "100%",
   minHeight: "800px",
   borderRadius: "8px",
-  backgroundColor: "#B2F5EA",
+  backgroundColor: "pink",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -233,5 +235,5 @@ const Section = styled.div({
 const FormContainer = styled.div({
   width: "80%",
   borderRadius: "8px",
-  backgroundColor: "gray.700",
+  // backgroundColor: "gray.700",
 });

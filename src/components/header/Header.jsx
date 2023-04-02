@@ -45,6 +45,7 @@ export default function DarkModeSwitch() {
                     aria-label={item.name}
                     my={5}
                     w="100%"
+                    color="hotpink"
                   >
                     {item.name}
                   </Button>
@@ -60,6 +61,7 @@ export default function DarkModeSwitch() {
                 my={5}
                 w="100%"
                 onClick={handleLogout}
+                color="hotpink"
               >
                 Logout 🔐
               </Button>
@@ -71,6 +73,7 @@ export default function DarkModeSwitch() {
                   aria-label="Login"
                   my={5}
                   w="100%"
+                  color="hotpink"
                 >
                   Login 🔐
                 </Button>

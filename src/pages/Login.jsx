@@ -96,8 +96,8 @@ const Login = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Avatar bg="teal.500" />
-          <Heading color="teal.400">Welcome</Heading>
+          <Avatar bg="pink.500" />
+          <Heading color="pink.400">Welcome</Heading>
           <Box minW={{ base: "90%", md: "468px" }}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Stack spacing={4} p="1rem" boxShadow="md">
@@ -151,7 +151,7 @@ const Login = () => {
                   borderRadius={0}
                   type="submit"
                   variant="solid"
-                  colorScheme="teal"
+                  colorScheme="pink"
                   width="full"
                   isLoading={isSubmitting}
                 >
@@ -173,7 +173,7 @@ const Login = () => {
           )}
           <Box>
             Haven't created an account with us?{" "}
-            <Link color="teal.500" href="/signup">
+            <Link color="pink.500" href="/signup">
               Sign up here!
             </Link>
           </Box>

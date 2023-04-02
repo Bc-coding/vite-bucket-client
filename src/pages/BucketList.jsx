@@ -35,7 +35,7 @@ const BucketList = () => {
       <Layout>
         <ButtonWrapper>
           <Link href="/add-new-idea">
-            <Button colorScheme="teal">Add an idea</Button>
+            <Button colorScheme="pink">Add an idea</Button>
           </Link>
         </ButtonWrapper>
         <QueryResult

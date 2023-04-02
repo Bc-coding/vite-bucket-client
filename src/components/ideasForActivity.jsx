@@ -48,7 +48,7 @@ const IdeasForActivity = () => {
           return (
             <Button
               key={i}
-              colorScheme="teal"
+              colorScheme="pink"
               marginRight="20px"
               marginBottom="20px"
               size="sm"

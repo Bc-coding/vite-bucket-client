@@ -69,7 +69,7 @@ const AddNewIdea = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Heading color="teal.400">New idea</Heading>
+              <Heading color="pink.400">New idea</Heading>
               <Box minW={{ base: "90%", md: "468px" }}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <Stack spacing={4} p="1rem" boxShadow="md">
@@ -160,7 +160,7 @@ const AddNewIdea = () => {
                       borderRadius={0}
                       type="submit"
                       variant="solid"
-                      colorScheme="teal"
+                      colorScheme="pink"
                       width="full"
                       isLoading={isSubmitting}
                     >

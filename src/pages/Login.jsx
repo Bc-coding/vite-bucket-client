@@ -38,8 +38,34 @@ const Login = () => {
   const { setIsUserLoggedIn } = useContext(AuthContext);
 
   // Mutation query for login user method
-  const [loginUser, { loading, data, error: loginError }] =
-    useMutation(LOGIN_USER);
+  const [loginUser, { loading, data: loginData, error: loginError }] =
+    useMutation(LOGIN_USER, {
+      // to observe what the mutation response returns
+      onCompleted: (loginData, loginError) => {
+        // Store token if login is successful
+        if (loginData) {
+          // console.log(loginData);
+          const userInfo = {
+            id: loginData.login.user.id,
+            userId: loginData.login.user.userId,
+            name: loginData.login.user.name,
+            email: loginData.login.user.email,
+          };
+
+          localStorage.setItem("user", JSON.stringify(userInfo));
+          localStorage.setItem("token", loginData.login.token);
+          setIsUserLoggedIn(true);
+
+          // Redirect to home page
+          return <Redirect to="/" />;
+        }
+
+        if (loginError) {
+          console.log(loginError);
+        }
+      },
+    });
+
   const {
     register,
     handleSubmit,
@@ -48,7 +74,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = values => {
-    console.log(values);
+    //  console.log(values);
     loginUser({
       variables: {
         input: {
@@ -61,25 +87,7 @@ const Login = () => {
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
-  console.log(watch("email")); // watch input value by passing the name of it
-
-  // Store token if login is successful
-  if (data) {
-    console.log(data);
-    const userInfo = {
-      id: data.login.user.id,
-      userId: data.login.user.userId,
-      name: data.login.user.name,
-      email: data.login.user.email,
-    };
-
-    localStorage.setItem("user", JSON.stringify(userInfo));
-    localStorage.setItem("token", data.login.token);
-    setIsUserLoggedIn(true);
-
-    // Redirect to home page
-    return <Redirect to="/" />;
-  }
+  // console.log(watch("email")); // watch input value by passing the name of it
 
   return (
     <Layout>
@@ -164,7 +172,9 @@ const Login = () => {
             <Box>
               <Alert status="error">
                 <AlertIcon />
-                <AlertTitle>{loginError.message}</AlertTitle>
+                <AlertTitle>{`${
+                  loginError.message ? "Error" : null
+                }`}</AlertTitle>
                 <AlertDescription>
                   Please ensure your email and password are correct.
                 </AlertDescription>

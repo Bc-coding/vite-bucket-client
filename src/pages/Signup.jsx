@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Flex,
   Heading,
@@ -23,15 +23,18 @@ import { FaUserAlt, FaLock } from "react-icons/fa";
 import Layout from "../components/Layout";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { Redirect } from "react-router";
 import { SIGNUP } from "../queries";
 import { useHistory } from "react-router-dom";
+
+import AuthContext from "../context/authContext";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
 const Signup = () => {
   let history = useHistory();
+
+  const { setIsUserLoggedIn } = useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -45,14 +48,15 @@ const Signup = () => {
 
         // Store token if login is successful
         if (signupData) {
+          // console.log(signupData);
           const userInfo = {
-            id: signupData.signup.id,
-            userId: signupData.signup.userId,
-            name: signupData.signup.name,
-            email: signupData.signup.email,
+            id: signupData.signup.user.id,
+            userId: signupData.signup.user.userId,
+            name: signupData.signup.user.name,
+            email: signupData.signup.user.email,
           };
 
-          window.localStorage.setItem("user", JSON.stringify(userInfo));
+          setIsUserLoggedIn(false);
 
           // Redirect to home page
           history.push("/login");
@@ -81,7 +85,7 @@ const Signup = () => {
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
-  console.log(watch("email")); // watch input value by passing the name of it
+  //console.log(watch("email")); // watch input value by passing the name of it
 
   return (
     <Layout>

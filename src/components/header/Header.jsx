@@ -22,14 +22,14 @@ export default function DarkModeSwitch() {
     useContext(AuthContext);
 
   const handleLogout = () => {
-    window.localStorage.removeItem("token");
-    window.localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setUser(false);
     setIsUserLoggedIn(false);
   };
   return (
     <HeaderContainer>
-      <Flex>
+      <Flex height="100px">
         <Link href="/">
           <Logo />
         </Link>
@@ -101,5 +101,10 @@ export default function DarkModeSwitch() {
 }
 
 const HeaderContainer = styled.div({
+  position: "absolute",
+  top: "0",
+  zIndex: "2",
   height: "100px",
+  backgroundColor: "transparent",
+  width: "100%",
 });

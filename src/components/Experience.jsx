@@ -1,10 +1,18 @@
-import { OrbitControls, Text3D, Center } from "@react-three/drei";
+import {
+  OrbitControls,
+  Text3D,
+  Center,
+  useMatcapTexture,
+} from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
+  const [matcapTexture] = useMatcapTexture("624541_FCD0C6_E4A19A_FCBCB4", 256);
+
+  //console.log(matcapTexture);
   return (
     <>
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
 
       <OrbitControls makeDefault />
 
@@ -17,10 +25,25 @@ export default function Experience() {
           letterSpacing={-0.01}
           curveSegments={12}
         >
-          {`Join us!\nLet's create\nyour bucket list`}
-          <meshNormalMaterial />
+          {`Let's create\nyour bucket list`}
+          <meshMatcapMaterial matcap={matcapTexture} />
         </Text3D>
       </Center>
+
+      {[...Array(100)].map((item, i) => (
+        <mesh
+          key={i}
+          position={[
+            (Math.random() - 0.5) * 10,
+            (Math.random() - 0.5) * 10,
+            (Math.random() - 0.5) * 10,
+          ]}
+          scale={0.2 + Math.random() * 0.002}
+        >
+          <sphereGeometry />
+          <meshMatcapMaterial matcap={matcapTexture} />
+        </mesh>
+      ))}
     </>
   );
 }

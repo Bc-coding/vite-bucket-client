@@ -182,7 +182,6 @@ const Signup = () => {
             <Box>
               <Alert status="error">
                 <AlertIcon />
-                {/* <AlertTitle>{signupError.message}</AlertTitle> */}
                 <AlertDescription>Please try again.</AlertDescription>
               </Alert>
             </Box>
@@ -192,7 +191,6 @@ const Signup = () => {
             <Box>
               <Alert status="success">
                 <AlertIcon />
-
                 <AlertDescription>
                   The account has been registered successfully! Please check
                   your email.

@@ -7,7 +7,7 @@ import {
 import { Perf } from "r3f-perf";
 
 export default function Experience() {
-  const [matcapTexture] = useMatcapTexture("624541_FCD0C6_E4A19A_FCBCB4", 256);
+  const [matcapTexture] = useMatcapTexture("1D3FCC_051B5F_81A0F2_5579E9", 256);
 
   //console.log(matcapTexture);
   return (

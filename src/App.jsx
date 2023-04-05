@@ -9,6 +9,7 @@ import AuthContext from "./context/authContext";
 
 import AddPost from "./pages/AddPost";
 import UpdatePost from "./pages/UpdatePost";
+import Confirm from "./pages/Confirm";
 
 import "./App.css";
 
@@ -42,6 +43,9 @@ function App() {
         </Switch>
         <Switch>
           <Route exact path="/updatepost/:postId" component={UpdatePost} />
+        </Switch>
+        <Switch>
+          <Route exact path="/confirm/:confirmationCode" component={Confirm} />
         </Switch>
       </BrowserRouter>
     </AuthContext.Provider>

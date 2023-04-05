@@ -24,7 +24,7 @@ import { FaUserAlt, FaLock } from "react-icons/fa";
 import Layout from "../components/Layout";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { Redirect } from "react-router";
+
 import { LOGIN_USER } from "../queries";
 import { useHistory } from "react-router-dom";
 

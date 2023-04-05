@@ -57,9 +57,6 @@ const Signup = () => {
           };
 
           setIsUserLoggedIn(false);
-
-          // Redirect to home page
-          history.push("/login");
         }
       },
     });
@@ -185,8 +182,21 @@ const Signup = () => {
             <Box>
               <Alert status="error">
                 <AlertIcon />
-                <AlertTitle>{signupError.message}</AlertTitle>
+                {/* <AlertTitle>{signupError.message}</AlertTitle> */}
                 <AlertDescription>Please try again.</AlertDescription>
+              </Alert>
+            </Box>
+          )}
+
+          {signupData && (
+            <Box>
+              <Alert status="success">
+                <AlertIcon />
+
+                <AlertDescription>
+                  The account has been registered successfully! Please check
+                  your email.
+                </AlertDescription>
               </Alert>
             </Box>
           )}

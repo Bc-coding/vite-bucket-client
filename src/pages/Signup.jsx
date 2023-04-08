@@ -55,7 +55,7 @@ const Signup = () => {
             name: signupData.signup.user.name,
             email: signupData.signup.user.email,
           };
-
+          localStorage.setItem("signup", JSON.stringify(userInfo));
           setIsUserLoggedIn(false);
         }
       },

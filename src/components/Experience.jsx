@@ -10,6 +10,7 @@ import * as THREE from "three";
 import { Perf } from "r3f-perf";
 
 const boxGeometry = new THREE.BoxGeometry();
+const sphereGeometry = new THREE.SphereGeometry();
 const material = new THREE.MeshMatcapMaterial();
 
 export default function Experience() {
@@ -55,10 +56,30 @@ export default function Experience() {
       </Center>
 
       <group ref={boxGroup}>
-        {[...Array(100)].map((item, i) => (
+        {[...Array(50)].map((item, i) => (
           <mesh
             key={i}
             geometry={boxGeometry}
+            material={material}
+            position={[
+              (Math.random() - 0.5) * 10,
+              (Math.random() - 0.5) * 10,
+              (Math.random() - 0.5) * 10,
+            ]}
+            scale={0.2 + Math.random() * 0.002}
+            rotation={[Math.random() * Math.PI, Math.random() * Math.PI, 0]}
+          >
+            {/* <sphereGeometry />
+          <meshMatcapMaterial matcap={matcapTexture} /> */}
+          </mesh>
+        ))}
+      </group>
+
+      <group>
+        {[...Array(100)].map((item, i) => (
+          <mesh
+            key={i}
+            geometry={sphereGeometry}
             material={material}
             position={[
               (Math.random() - 0.5) * 10,

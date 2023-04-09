@@ -88,7 +88,7 @@ const BucketList = () => {
             <Text fontSize="2xl">
               Not registered?
               <LinkSpan>
-                <Link href={`/login`}>Join us </Link>
+                <Link href={`/signup`}>Join us </Link>
               </LinkSpan>{" "}
               to start creating your bucket list
             </Text>

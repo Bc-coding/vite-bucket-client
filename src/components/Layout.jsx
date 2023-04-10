@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <Container maxW="container.md" marginTop="80px">
+      <Container maxW="container.md" marginTop="140px">
         {children}
       </Container>
       {/* <Footer /> */}

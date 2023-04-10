@@ -144,7 +144,6 @@ const AddPost = () => {
                         />
                         {/* register your input into the hook by invoking the "register" function */}
                         <Input
-                          // required
                           id="emoji"
                           name="emoji"
                           type="emoji"
@@ -162,7 +161,6 @@ const AddPost = () => {
                         />
                         {/* register your input into the hook by invoking the "register" function */}
                         <Input
-                          // required
                           id="dateCompletion"
                           name="dateCompletion"
                           type="dateCompletion"

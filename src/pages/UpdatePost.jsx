@@ -16,7 +16,13 @@ import {
   Icon,
   useColorMode,
 } from "@chakra-ui/react";
-import { FcIdea, FcOrganization, FcGlobe, FcCloseUpMode } from "react-icons/fc";
+import {
+  FcIdea,
+  FcOrganization,
+  FcGlobe,
+  FcCloseUpMode,
+  FcCalendar,
+} from "react-icons/fc";
 import { UPDATE_BUCKET_LIST_BY_USER, GET_POST_BY_USER } from "../queries";
 import { useMutation, useQuery } from "@apollo/client";
 import { useParams, useHistory } from "react-router-dom";
@@ -183,6 +189,23 @@ const UpdatePost = () => {
                             placeholder={"Paste an emoji"}
                             autoFocus
                             {...register("emoji")}
+                          />
+                        </InputGroup>
+                      </FormControl>
+                      <FormControl>
+                        <InputGroup>
+                          <InputLeftElement
+                            pointerEvents="none"
+                            children={<Icon as={FcCalendar} />}
+                          />
+                          {/* register your input into the hook by invoking the "register" function */}
+                          <Input
+                            id="dateCompletion"
+                            name="dateCompletion"
+                            type="dateCompletion"
+                            placeholder="The date of completion"
+                            autoFocus
+                            {...register("dateCompletion")}
                           />
                         </InputGroup>
                       </FormControl>

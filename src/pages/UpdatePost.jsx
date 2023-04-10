@@ -93,8 +93,16 @@ const UpdatePost = () => {
       },
     });
   };
+
+  const handleGoBack = () => {
+    history.goBack();
+  };
+
   return (
     <Layout>
+      <ButtonWrapper>
+        <Button onClick={handleGoBack}>Back</Button>
+      </ButtonWrapper>
       <Section>
         <QueryResult
           error={getPostError}
@@ -258,4 +266,10 @@ const FormContainer = styled.div({
   width: "80%",
   borderRadius: "8px",
   // backgroundColor: "gray.700",
+});
+
+const ButtonWrapper = styled.div({
+  marginBottom: "30px",
+  display: "flex",
+  justifyContent: "space-between",
 });

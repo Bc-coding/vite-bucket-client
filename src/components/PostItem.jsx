@@ -59,7 +59,7 @@ const PostItem = ({ post }) => {
     <>
       <ButtonWrapper>
         <Button onClick={handleGoBack}>Back</Button>
-        <Link href="/add-new-idea">
+        <Link href="/add-post">
           <Button colorScheme="pink">Add another idea</Button>
         </Link>
       </ButtonWrapper>

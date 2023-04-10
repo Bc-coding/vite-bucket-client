@@ -138,7 +138,7 @@ const AddPost = () => {
                         />
                         {/* register your input into the hook by invoking the "register" function */}
                         <Input
-                          required
+                          // required
                           id="emoji"
                           name="emoji"
                           type="emoji"

@@ -168,12 +168,12 @@ const AddPost = () => {
                         />
                         {/* register your input into the hook by invoking the "register" function */}
                         <Input
-                          id="dateCompletion"
-                          name="dateCompletion"
-                          type="dateCompletion"
+                          id="date"
+                          name="date"
+                          type="date"
                           placeholder="The date of completion"
                           autoFocus
-                          {...register("dateCompletion")}
+                          {...register("date")}
                         />
                       </InputGroup>
                     </FormControl>

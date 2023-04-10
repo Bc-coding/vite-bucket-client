@@ -58,6 +58,12 @@ const UpdatePost = () => {
           ? null
           : data.getPostBucketList.post.emoji
       );
+      setValue(
+        "date",
+        data.getPostBucketList.post.date == null
+          ? null
+          : data.getPostBucketList.post.date
+      );
     },
   });
 
@@ -208,12 +214,12 @@ const UpdatePost = () => {
                           />
                           {/* register your input into the hook by invoking the "register" function */}
                           <Input
-                            id="dateCompletion"
-                            name="dateCompletion"
-                            type="dateCompletion"
+                            id="date"
+                            name="date"
+                            type="date"
                             placeholder="The date of completion"
                             autoFocus
-                            {...register("dateCompletion")}
+                            {...register("date")}
                           />
                         </InputGroup>
                       </FormControl>

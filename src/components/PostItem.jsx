@@ -90,6 +90,9 @@ const PostItem = ({ post }) => {
             <IconAndLabel>
               <div id="completed">completed: {completed ? "Yes" : "No"}</div>
             </IconAndLabel>
+            <IconAndLabel>
+              <div id="date">date of completion: {date}</div>
+            </IconAndLabel>
           </DetailItem>
           {/* <DetailItem>
               <h4>Author</h4>

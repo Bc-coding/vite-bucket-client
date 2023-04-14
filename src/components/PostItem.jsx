@@ -16,6 +16,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
+import { FcOk } from "react-icons/fc";
+
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { DELETE_POST_BY_USER } from "../queries";
 
@@ -88,7 +90,7 @@ const PostItem = ({ post }) => {
               </div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id="completed">completed: {completed ? "Yes" : "No"}</div>
+              <div id="completed">completed: {date ? <FcOk /> : "No"}</div>
             </IconAndLabel>
             <IconAndLabel>
               <div id="date">date of completion: {date}</div>
@@ -230,6 +232,9 @@ const IconAndLabel = styled.div({
   width: "100%",
   div: {
     marginLeft: 8,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   svg: {
     maxHeight: 16,

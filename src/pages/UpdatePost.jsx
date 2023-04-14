@@ -87,7 +87,12 @@ const UpdatePost = () => {
   } = useForm();
 
   const onSubmit = values => {
-    // console.log(values);
+    console.log(values);
+    const newValues = {
+      ...values,
+    };
+    // console.log(newValues);
+
     handleBucketListUpdate({
       variables: {
         input: {

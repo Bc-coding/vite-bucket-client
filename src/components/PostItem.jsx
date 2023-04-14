@@ -84,7 +84,7 @@ const PostItem = ({ post }) => {
             </IconAndLabel>
             <IconAndLabel>
               <div id="created-at">
-                created at: {dateCreatedAt.toLocaleDateString("en-uk")}
+                created at: {dateCreatedAt.toISOString().split("T")[0]}
               </div>
             </IconAndLabel>
             <IconAndLabel>

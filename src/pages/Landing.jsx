@@ -26,10 +26,3 @@ const Landing = () => {
 };
 
 export default Landing;
-
-// <div style={{ textAlign: "center" }}>
-//   <h1 style={{ marginBottom: "20px" }}>
-//     Looking for an idea for things to do?
-//   </h1>
-//   <IdeasForActivity />
-// </div>;

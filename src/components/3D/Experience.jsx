@@ -26,7 +26,7 @@ export default function Experience() {
       />
       <ambientLight intensity={0.5} />
 
-      <color args={["ivory"]} attach='background' />
+      {/* <color args={["ivory"]} attach='background' /> */}
 
       <Suspense fallback={<Placeholder />}>
         <ModelPenBook />

@@ -4,13 +4,14 @@ import Layout from "../components/Layout";
 import Header from "../components/header/Header";
 
 import { Canvas } from "@react-three/fiber";
-import Experience from "../components/Experience";
+import Experience from "../components/3D/Experience";
 
 const Landing = () => {
   return (
     <>
       <Header />
       <Canvas
+        shadows={false}
         camera={{
           fov: 45,
           near: 0.1,
@@ -25,10 +26,3 @@ const Landing = () => {
 };
 
 export default Landing;
-
-// <div style={{ textAlign: "center" }}>
-//   <h1 style={{ marginBottom: "20px" }}>
-//     Looking for an idea for things to do?
-//   </h1>
-//   <IdeasForActivity />
-// </div>;

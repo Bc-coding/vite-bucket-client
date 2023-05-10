@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
@@ -57,6 +57,21 @@ const PostItem = ({ post }) => {
     history.goBack();
   };
 
+  // const [randomColor_1, setRandomColor_1] = useState("");
+
+  // useEffect(() => {
+  //   const color_1 = Math.floor(Math.random() * 16777215).toString(16);
+  //   setRandomColor_1(color_1);
+  //   const randomColor_2 = Math.floor(Math.random() * 16777215).toString(16);
+  //   const randomColor_3 = Math.floor(Math.random() * 16777215).toString(16);
+  //   const randomColor_4 = Math.floor(Math.random() * 16777215).toString(16);
+  // }, []);
+
+  // console.log(randomColor_1);
+
+  const setColor = () =>
+    "#" + Math.floor(Math.random() * 16777215).toString(16);
+
   return (
     <>
       <ButtonWrapper>
@@ -65,10 +80,11 @@ const PostItem = ({ post }) => {
           <Button colorScheme="pink">Add another idea</Button>
         </Link>
       </ButtonWrapper>
-      <CoverImage
+      {/* <CoverImage
         src="https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/4/2014/12/hello-kitty-1024x640.jpg"
         alt=""
-      />
+      /> */}
+      <ContainerGradient setColor />
       <PostDetails>
         <DetailRow>
           <h1>💡{title}</h1>
@@ -163,6 +179,14 @@ const CoverImage = styled.img({
   borderRadius: 4,
   marginBottom: 30,
 });
+
+const ContainerGradient = styled.div(props => ({
+  height: "200px",
+  width: "100%",
+  backgroundColor: props.setColor | "#4158d0",
+  borderRadius: "4",
+  backgroundImage: `linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)`,
+}));
 
 const PostDetails = styled.div({
   display: "flex",

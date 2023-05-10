@@ -15,8 +15,8 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import theme from "./theme";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/",
-  // uri: "https://bucket-server-production.up.railway.app/",
+  uri: `${import.meta.env.VITE_BUCKET_SERVER_DEV}`,
+  // uri: `${import.meta.env.VITE_BUCKET_SERVER_PROD}`,
 });
 
 const authLink = setContext((body, { headers }) => {
@@ -27,13 +27,12 @@ const authLink = setContext((body, { headers }) => {
     headers: {
       ...headers,
       authorization: token,
-      // authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
 
 const client = new ApolloClient({
-  // uri: "http://localhost:4000/",
+  // uri: `${import.meta.env.VITE_BUCKET_SERVER_DEV}`,
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });

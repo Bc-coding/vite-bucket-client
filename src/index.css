@@ -8,3 +8,7 @@ body,
   height: 100%;
   overflow: scroll;
 }
+
+a {
+  text-decoration: none !important;
+}

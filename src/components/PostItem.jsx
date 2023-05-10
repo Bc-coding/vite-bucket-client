@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
+import FetchAnIdea from "./fetchAnIdea";
 
 import {
+  Text,
   Link,
   Button,
   Modal,
@@ -46,7 +48,7 @@ const PostItem = ({ post }) => {
       },
     },
     // to observe what the mutation response returns
-    onCompleted: data => {
+    onCompleted: (data) => {
       console.log(data);
     },
   });
@@ -57,37 +59,46 @@ const PostItem = ({ post }) => {
     history.goBack();
   };
 
-  // const [randomColor_1, setRandomColor_1] = useState("");
+  const [randomColor_1, setRandomColor_1] = useState("");
+  const [randomColor_2, setRandomColor_2] = useState("");
+  const [randomColor_3, setRandomColor_3] = useState("");
+  const [randomColor_4, setRandomColor_4] = useState("");
 
-  // useEffect(() => {
-  //   const color_1 = Math.floor(Math.random() * 16777215).toString(16);
-  //   setRandomColor_1(color_1);
-  //   const randomColor_2 = Math.floor(Math.random() * 16777215).toString(16);
-  //   const randomColor_3 = Math.floor(Math.random() * 16777215).toString(16);
-  //   const randomColor_4 = Math.floor(Math.random() * 16777215).toString(16);
-  // }, []);
-
-  // console.log(randomColor_1);
-
-  const setColor = () =>
-    "#" + Math.floor(Math.random() * 16777215).toString(16);
+  useEffect(() => {
+    const color_1 = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    const color_2 = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    const color_3 = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    const color_4 = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    setRandomColor_1(color_1);
+    setRandomColor_2(color_2);
+    setRandomColor_3(color_3);
+    setRandomColor_4(color_4);
+  }, []);
 
   return (
     <>
       <ButtonWrapper>
         <Button onClick={handleGoBack}>Back</Button>
-        <Link href="/add-post">
-          <Button colorScheme="pink">Add another idea</Button>
+        <Link href='/add-post'>
+          <Button colorScheme='pink'>Add another idea</Button>
         </Link>
       </ButtonWrapper>
-      {/* <CoverImage
-        src="https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/4/2014/12/hello-kitty-1024x640.jpg"
-        alt=""
-      /> */}
-      <ContainerGradient setColor />
+      <ContainerGradient
+        randomColor_1={randomColor_1}
+        randomColor_2={randomColor_2}
+        randomColor_3={randomColor_3}
+        randomColor_4={randomColor_4}
+      >
+        <Text fontSize='20px' color='white'>
+          <FetchAnIdea />
+        </Text>
+      </ContainerGradient>
       <PostDetails>
         <DetailRow>
-          <h1>💡{title}</h1>
+          <h1>
+            <span style={{ marginRight: "8px" }}>🌟</span>
+            {title}
+          </h1>
         </DetailRow>
         <DetailRow>
           <DetailItem>
@@ -95,21 +106,21 @@ const PostItem = ({ post }) => {
               <h4 style={{ marginLeft: "8px" }}>📝 Item details</h4>
             </IconAndLabel>
             <IconAndLabel>
-              <div id="category">category: {category}</div>
+              <div id='category'>category: {category}</div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id="location">location: {location}</div>
+              <div id='location'>location: {location}</div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id="created-at">
+              <div id='created-at'>
                 created at: {dateCreatedAt.toISOString().split("T")[0]}
               </div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id="completed">completed: {date ? <FcOk /> : "No"}</div>
+              <div id='completed'>completed: {date ? <FcOk /> : "No"}</div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id="date">date of completion: {date}</div>
+              <div id='date'>date of completion: {date}</div>
             </IconAndLabel>
           </DetailItem>
           {/* <DetailItem>
@@ -120,12 +131,12 @@ const PostItem = ({ post }) => {
           <DetailItem>
             {/* <StyledLink to={`./module/${modules[0]["id"]}`}> */}
             <Link href={`/updatepost/${id}`}>
-              <Button as="a" aria-label="update post">
+              <Button as='a' aria-label='update post'>
                 <EditIcon />
               </Button>
             </Link>
 
-            <Button onClick={onOpen}>
+            <Button onClick={onOpen} style={{ marginTop: "8px" }}>
               <DeleteIcon />
             </Button>
             {/* </StyledLink> */}
@@ -141,11 +152,11 @@ const PostItem = ({ post }) => {
                 </ModalBody>
 
                 <ModalFooter>
-                  <Button colorScheme="blue" mr={3} onClick={onClose}>
+                  <Button colorScheme='blue' mr={3} onClick={onClose}>
                     Close
                   </Button>
                   <Button
-                    variant="ghost"
+                    variant='ghost'
                     onClick={() => {
                       handlePostDelete();
                       onClose();
@@ -180,12 +191,16 @@ const CoverImage = styled.img({
   marginBottom: 30,
 });
 
-const ContainerGradient = styled.div(props => ({
-  height: "200px",
+const ContainerGradient = styled.div((props) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "120px",
   width: "100%",
-  backgroundColor: props.setColor | "#4158d0",
-  borderRadius: "4",
-  backgroundImage: `linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)`,
+  backgroundColor: props.randomColor_1,
+  borderRadius: 4,
+  backgroundImage: `linear-gradient(43deg, ${props.randomColor_2} 0%, ${props.randomColor_3} 46%, ${props.randomColor_4} 100%)`,
+  marginBottom: "20px",
 }));
 
 const PostDetails = styled.div({
@@ -217,6 +232,9 @@ const DetailRow = styled.div({
   paddingBottom: 20,
   marginBottom: 20,
   borderBottom: `solid 1px lightgrey`,
+  h1: {
+    fontSize: "20px",
+  },
 });
 
 const DetailItem = styled.div({

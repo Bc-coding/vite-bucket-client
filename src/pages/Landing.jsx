@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import Header from "../components/header/Header";
 
 import { Canvas } from "@react-three/fiber";
-import Experience from "../components/Experience";
+import Experience from "../components/3D/Experience";
 
 const Landing = () => {
   return (

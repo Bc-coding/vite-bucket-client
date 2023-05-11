@@ -129,7 +129,7 @@ const PostItem = ({ post }) => {
           <DetailItem>
             {/* <StyledLink to={`./module/${modules[0]["id"]}`}> */}
             <Link href={`/updatepost/${id}`}>
-              <Button as='a' aria-label='update post'>
+              <Button aria-label='update post'>
                 <EditIcon />
               </Button>
             </Link>

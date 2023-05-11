@@ -17,40 +17,39 @@ export default function MobileContent({ display, changeDisplay }) {
   };
   return (
     <Flex
-      w="100vw"
+      w='100vw'
       display={display}
-      bgColor="gray.50"
+      bgColor='gray.50'
       zIndex={20}
-      h="100vh"
-      pos="fixed"
-      top="0"
-      left="0"
-      overflowY="auto"
-      flexDir="column"
+      h='100vh'
+      pos='fixed'
+      top='0'
+      left='0'
+      overflowY='auto'
+      flexDir='column'
     >
-      <Flex justify="flex-end">
+      <Flex justify='flex-end'>
         <IconButton
           mt={2}
           mr={2}
-          aria-label="Open Menu"
-          size="lg"
+          aria-label='Open Menu'
+          size='lg'
           icon={<CloseIcon />}
           onClick={() => changeDisplay("none")}
-          color="hotpink"
+          color='hotpink'
         />
       </Flex>
 
-      <Flex flexDir="column" align="center">
-        {navItems.map(item => {
+      <Flex flexDir='column' align='center'>
+        {navItems.map((item) => {
           return (
             <Link key={item.id} href={item.href}>
               <Button
-                as="a"
-                variant="ghost"
+                variant='ghost'
                 aria-label={item.nave}
                 my={5}
-                w="100%"
-                color="hotpink"
+                w='100%'
+                color='hotpink'
               >
                 {item.name}
               </Button>
@@ -60,25 +59,24 @@ export default function MobileContent({ display, changeDisplay }) {
 
         {isUserLoggedIn ? (
           <Button
-            as="a"
-            variant="ghost"
-            aria-label="Logout"
+            as='a'
+            variant='ghost'
+            aria-label='Logout'
             my={5}
-            w="100%"
+            w='100%'
             onClick={handleLogout}
-            color="hotpink"
+            color='hotpink'
           >
             Logout 🔐
           </Button>
         ) : (
-          <Link href="/login">
+          <Link href='/login'>
             <Button
-              as="a"
-              variant="ghost"
-              aria-label="Login"
+              variant='ghost'
+              aria-label='Login'
               my={5}
-              w="100%"
-              color="hotpink"
+              w='100%'
+              color='hotpink'
             >
               Login 🔐
             </Button>

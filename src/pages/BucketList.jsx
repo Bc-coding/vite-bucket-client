@@ -34,8 +34,8 @@ const BucketList = () => {
     return (
       <Layout>
         <ButtonWrapper>
-          <Link href="/add-post">
-            <Button colorScheme="pink">Add an idea</Button>
+          <Link href='/add-post'>
+            <Button colorScheme='pink'>Add an idea</Button>
           </Link>
         </ButtonWrapper>
         <QueryResult
@@ -45,20 +45,20 @@ const BucketList = () => {
         >
           <SimpleGrid
             spacing={4}
-            templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+            templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
           >
             {readAllListData?.readAllBucketList.posts.map((item, i) => {
               return (
                 <Card key={item.id}>
                   <CardHeader>
-                    <Heading size="md">{item.title}</Heading>
+                    <Heading size='md'>{item.title}</Heading>
                   </CardHeader>
                   <CardBody>
                     <Text>{item.desc}</Text>
                   </CardBody>
                   <CardFooter>
                     <Link href={`/post/${item.id}`}>
-                      <Button as="a" aria-label="view post">
+                      <Button aria-label='view post'>
                         View Here
                         <span style={{ marginLeft: "10px" }}>{item.emoji}</span>
                       </Button>
@@ -76,16 +76,16 @@ const BucketList = () => {
       <Layout>
         <LoginMsgContainer>
           <Stack spacing={3}>
-            <Text fontSize="6xl">Hi! 👋</Text>
-            <Text fontSize="5xl">Please log in or register</Text>
-            <Text fontSize="2xl">
+            <Text fontSize='6xl'>Hi! 👋</Text>
+            <Text fontSize='5xl'>Please log in or register</Text>
+            <Text fontSize='2xl'>
               You need to{" "}
               <LinkSpan>
                 <Link href={`/login`}>log in</Link>
               </LinkSpan>{" "}
               to see your bucket list
             </Text>
-            <Text fontSize="2xl">
+            <Text fontSize='2xl'>
               Not registered?
               <LinkSpan>
                 <Link href={`/signup`}>Join us </Link>

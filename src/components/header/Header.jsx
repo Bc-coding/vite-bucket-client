@@ -29,23 +29,22 @@ export default function DarkModeSwitch() {
   };
   return (
     <HeaderContainer>
-      <Flex height="100px">
-        <Link href="/">
+      <Flex height='100px'>
+        <Link href='/'>
           <Logo />
         </Link>
-        <Flex position="fixed" top="1rem" right="1rem" align="center">
+        <Flex position='fixed' top='1rem' right='1rem' align='center'>
           {/* Desktop */}
           <Flex display={["none", "none", "flex", "flex"]}>
-            {navItems.map(item => {
+            {navItems.map((item) => {
               return (
                 <Link key={item.id} href={item.href}>
                   <Button
-                    as="a"
-                    variant="ghost"
+                    variant='ghost'
                     aria-label={item.name}
                     my={5}
-                    w="100%"
-                    color="hotpink"
+                    w='100%'
+                    color='hotpink'
                   >
                     {item.name}
                   </Button>
@@ -55,25 +54,23 @@ export default function DarkModeSwitch() {
 
             {isUserLoggedIn ? (
               <Button
-                as="a"
-                variant="ghost"
-                aria-label="Logout"
+                variant='ghost'
+                aria-label='Logout'
                 my={5}
-                w="100%"
+                w='100%'
                 onClick={handleLogout}
-                color="hotpink"
+                color='hotpink'
               >
                 Logout 🔐
               </Button>
             ) : (
-              <Link href="/login">
+              <Link href='/login'>
                 <Button
-                  as="a"
-                  variant="ghost"
-                  aria-label="Login"
+                  variant='ghost'
+                  aria-label='Login'
                   my={5}
-                  w="100%"
-                  color="hotpink"
+                  w='100%'
+                  color='hotpink'
                 >
                   Login 🔐
                 </Button>
@@ -83,14 +80,14 @@ export default function DarkModeSwitch() {
 
           {/* Mobile */}
           <IconButton
-            aria-label="Open Menu"
-            size="lg"
+            aria-label='Open Menu'
+            size='lg'
             mr={2}
             icon={<HamburgerIcon />}
             onClick={() => changeDisplay("flex")}
             display={["flex", "flex", "none", "none"]}
           />
-          <Switch color="green" isChecked={isDark} onChange={toggleColorMode} />
+          <Switch color='green' isChecked={isDark} onChange={toggleColorMode} />
         </Flex>
 
         {/* Mobile Content */}

@@ -89,9 +89,7 @@ const PostItem = ({ post }) => {
         randomColor_3={randomColor_3}
         randomColor_4={randomColor_4}
       >
-        <Text fontSize='20px' color='white'>
-          <FetchAnIdea />
-        </Text>
+        <FetchAnIdea />
       </ContainerGradient>
       <PostDetails>
         <DetailRow>
@@ -106,21 +104,21 @@ const PostItem = ({ post }) => {
               <h4 style={{ marginLeft: "8px" }}>📝 Item details</h4>
             </IconAndLabel>
             <IconAndLabel>
-              <div id='category'>category: {category}</div>
+              <div id='category'>Category: {category}</div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id='location'>location: {location}</div>
+              <div id='location'>Location: {location}</div>
             </IconAndLabel>
             <IconAndLabel>
               <div id='created-at'>
-                created at: {dateCreatedAt.toISOString().split("T")[0]}
+                Created at: {dateCreatedAt.toISOString().split("T")[0]}
               </div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id='completed'>completed: {date ? <FcOk /> : "No"}</div>
+              <div id='completed'>Completed: {date ? <FcOk /> : "No"}</div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id='date'>date of completion: {date}</div>
+              <div id='date'>Date of completion: {date}</div>
             </IconAndLabel>
           </DetailItem>
           {/* <DetailItem>

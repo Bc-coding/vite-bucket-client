@@ -1,10 +1,6 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
   SimpleGrid,
   Heading,
   Text,
@@ -18,6 +14,7 @@ import { READ_ALL_BUCKET_LIST_BY_USER } from "../queries/index";
 import { QueryResult } from "../components/index";
 import styled from "@emotion/styled";
 import AuthContext from "../context/authContext";
+import IdeaCard from "../components/ideaCard";
 
 const BucketList = () => {
   // CONTEXT
@@ -38,37 +35,27 @@ const BucketList = () => {
             <Button colorScheme='pink'>Add an idea</Button>
           </Link>
         </ButtonWrapper>
-        <QueryResult
-          error={readAllListError}
-          loading={readAllListLoading}
-          data={readAllListData}
-        >
-          <SimpleGrid
-            spacing={4}
-            templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
+        {readAllListData?.readAllBucketList.posts.length > 1 ? (
+          <QueryResult
+            error={readAllListError}
+            loading={readAllListLoading}
+            data={readAllListData}
           >
-            {readAllListData?.readAllBucketList.posts.map((item, i) => {
-              return (
-                <Card key={item.id}>
-                  <CardHeader>
-                    <Heading size='md'>{item.title}</Heading>
-                  </CardHeader>
-                  <CardBody>
-                    <Text>{item.desc}</Text>
-                  </CardBody>
-                  <CardFooter>
-                    <Link href={`/post/${item.id}`}>
-                      <Button aria-label='view post'>
-                        View Here
-                        <span style={{ marginLeft: "10px" }}>{item.emoji}</span>
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-              );
-            })}
-          </SimpleGrid>
-        </QueryResult>
+            <SimpleGrid
+              spacing={4}
+              templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
+            >
+              {readAllListData?.readAllBucketList.posts.map((item, i) => {
+                return <IdeaCard item={item} />;
+              })}
+            </SimpleGrid>
+          </QueryResult>
+        ) : (
+          <Heading>
+            Hey, let's create your first bucket list item by clicking on the
+            button above
+          </Heading>
+        )}
       </Layout>
     );
   } else {

@@ -9,7 +9,6 @@ import { QueryResult } from "../components/index";
 
 export default function Confirm() {
   let { confirmationCode } = useParams();
-  //console.log(confirmationCode);
 
   const [verifyEmail, { loading, data, error }] = useMutation(VERIFY_EMAIL, {
     // to observe what the mutation response returns
@@ -28,7 +27,7 @@ export default function Confirm() {
     verifyEmail({
       variables: {
         input: {
-          confirmationCode,
+          confirmationCode: confirmationCode,
         },
       },
     });
@@ -39,14 +38,14 @@ export default function Confirm() {
       <QueryResult error={error} loading={loading} data={data}>
         <ConfirmContainer>
           <Stack spacing={3}>
-            <Text fontSize="6xl">Hi! 👋</Text>
-            <Text fontSize="5xl">Account confirmed</Text>
-            <Text fontSize="2xl">
+            <Text fontSize='6xl'>Hi! 👋</Text>
+            <Text fontSize='5xl'>Account confirmed</Text>
+            <Text fontSize='2xl'>
               Please
               <LinkSpan>
                 <Link href={`/login`}>log in</Link>
               </LinkSpan>{" "}
-              to see your bucket list
+              to start creating your bucket list
             </Text>
           </Stack>
         </ConfirmContainer>

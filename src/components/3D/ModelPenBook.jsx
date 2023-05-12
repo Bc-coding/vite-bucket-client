@@ -6,7 +6,7 @@ import ModelPenBookComponent from "./ModelPenBookComponent";
 export default function ModelPenBook() {
   return (
     <>
-      <ModelPenBookComponent position-x={0.7} />
+      <ModelPenBookComponent position={[0.7, 0.5, 0]} rotation-y='-45' />
     </>
   );
 }

@@ -42,7 +42,7 @@ export default function ModelPenBookComponent(props) {
           receiveShadow
           geometry={nodes.Chrome.geometry}
           material={materials["metalic blue"]}
-          rotation={[1.01, -0.39, 1.34]}
+          rotation={[1.01, -0.29, 180.34]}
           scale={0.37}
         />
         <mesh
@@ -50,7 +50,7 @@ export default function ModelPenBookComponent(props) {
           receiveShadow
           geometry={nodes.Matte.geometry}
           material={materials.Matte}
-          rotation={[1.01, -0.39, 1.34]}
+          rotation={[1.01, -0.29, 180.34]}
           scale={0.37}
         />
         <mesh
@@ -58,12 +58,12 @@ export default function ModelPenBookComponent(props) {
           receiveShadow
           geometry={nodes.Glossy.geometry}
           material={materials.glossy}
-          rotation={[1.01, -0.39, 1.34]}
+          rotation={[1.01, -0.29, 180.34]}
           scale={0.37}
         />
         <group
           position={[0.34, 0.46, 1.9]}
-          rotation={[-3.11, -0.03, -35]}
+          rotation={[-3.11, -0.03, 35]}
           scale={-1.35}
         >
           <mesh

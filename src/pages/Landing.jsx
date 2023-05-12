@@ -16,7 +16,7 @@ const Landing = () => {
           fov: 45,
           near: 0.1,
           far: 200,
-          position: [4, 1, 8],
+          position: [4, 5, 8],
         }}
       >
         <Experience />

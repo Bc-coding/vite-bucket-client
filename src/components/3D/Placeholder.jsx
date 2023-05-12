@@ -27,7 +27,7 @@ export default function Placeholder() {
         letterSpacing={-0.01}
         curveSegments={12}
       >
-        {`Hello! `}
+        {`Loading! `}
         {/* <meshMatcapMaterial matcap={matcapTexture_blue} /> */}
       </Text3D>
     </Center>

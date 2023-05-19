@@ -10,6 +10,7 @@ import AuthContext from "./context/authContext";
 import AddPost from "./pages/AddPost";
 import UpdatePost from "./pages/UpdatePost";
 import Confirm from "./pages/Confirm";
+import NotFoundPage from "./components/NotFoundPage";
 
 import "./App.css";
 
@@ -33,19 +34,20 @@ function App() {
       value={{ user, setUser, isUserLoggedIn, setIsUserLoggedIn }}
     >
       <BrowserRouter>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/bucket-list" component={BucketList} />
-        <Route exact path="/add-post" component={AddPost} />
+        <Route exact path='/' component={Landing} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/bucket-list' component={BucketList} />
+        <Route exact path='/add-post' component={AddPost} />
+        <Route path='*' component={NotFoundPage} />
         <Switch>
-          <Route exact path="/post/:postId" component={Post} />
+          <Route exact path='/post/:postId' component={Post} />
         </Switch>
         <Switch>
-          <Route exact path="/updatepost/:postId" component={UpdatePost} />
+          <Route exact path='/updatepost/:postId' component={UpdatePost} />
         </Switch>
         <Switch>
-          <Route exact path="/confirm/:confirmationCode" component={Confirm} />
+          <Route exact path='/confirm/:confirmationCode' component={Confirm} />
         </Switch>
       </BrowserRouter>
     </AuthContext.Provider>

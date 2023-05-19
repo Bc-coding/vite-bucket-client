@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useMutation } from "@apollo/client";
 import { useHistory } from "react-router-dom";
-import FetchAnIdea from "./fetchAnIdea";
+import FetchAnIdea from "./FetchAnIdea";
 
 import {
   Text,

@@ -14,7 +14,7 @@ import { READ_ALL_BUCKET_LIST_BY_USER } from "../queries/index";
 import { QueryResult } from "../components/index";
 import styled from "@emotion/styled";
 import AuthContext from "../context/authContext";
-import IdeaCard from "../components/ideaCard";
+import IdeaCard from "../components/IdeaCard";
 
 const BucketList = () => {
   // CONTEXT

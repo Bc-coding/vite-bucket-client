@@ -36,35 +36,35 @@ const BucketList = () => {
             <Button colorScheme='pink'>Add an idea</Button>
           </Link>
         </ButtonWrapper>
-        {readAllListData?.readAllBucketList.posts.length > 1 ? (
-          <QueryResult
-            error={readAllListError}
-            loading={readAllListLoading}
-            data={readAllListData}
-          >
+        <QueryResult
+          error={readAllListError}
+          loading={readAllListLoading}
+          data={readAllListData}
+        >
+          {readAllListData?.readAllBucketList.posts.length > 1 ? (
             <SimpleGrid
               spacing={4}
               templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
             >
               {readAllListData?.readAllBucketList.posts.map((item, i) => {
-                return <IdeaCard item={item} />;
+                return <IdeaCard key={i} item={item} />;
               })}
             </SimpleGrid>
-          </QueryResult>
-        ) : (
-          <>
-            <Stack spacing={6}>
-              <CurlyArrow iconName='curlyArrow' />
-              <Heading fontSize='4xl'>
-                Your bucket list is currently empty
-              </Heading>
-              <Text fontSize='2xl'>
-                Let's create your first bucket list item by clicking the button
-                above
-              </Text>
-            </Stack>
-          </>
-        )}
+          ) : (
+            <>
+              <Stack spacing={6}>
+                <CurlyArrow iconname='curlyArrow' />
+                <Heading fontSize='4xl'>
+                  Your bucket list is currently empty
+                </Heading>
+                <Text fontSize='2xl'>
+                  Let's create your first bucket list item by clicking the
+                  button above
+                </Text>
+              </Stack>
+            </>
+          )}
+        </QueryResult>
       </Layout>
     );
   } else {

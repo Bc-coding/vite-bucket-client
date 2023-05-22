@@ -34,7 +34,6 @@ const UpdatePost = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const [show, setShow] = useState(true);
-  const handleFocus = () => setShow(!show);
 
   const {
     loading: getPostLoading,
@@ -67,8 +66,14 @@ const UpdatePost = () => {
           ? null
           : data.getPostBucketList.post.date
       );
+
+      if (data.getPostBucketList.post.date) {
+        setShow(false);
+      }
     },
   });
+
+  const handleFocus = () => setShow(false);
 
   const [handleBucketListUpdate, { data, loading, error }] = useMutation(
     UPDATE_BUCKET_LIST_BY_USER,

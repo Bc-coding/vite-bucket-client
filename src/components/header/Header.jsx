@@ -13,8 +13,11 @@ import Logo from "./Logo";
 import navItems from "./constants";
 import styled from "@emotion/styled";
 import AuthContext from "../../context/authContext";
+import { useHistory } from "react-router-dom";
 
 export default function DarkModeSwitch() {
+  let history = useHistory();
+
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const [display, changeDisplay] = useState("none");
@@ -26,6 +29,8 @@ export default function DarkModeSwitch() {
     localStorage.removeItem("user");
     setUser(false);
     setIsUserLoggedIn(false);
+    // Redirect to home page
+    history.push("/bucket-list");
   };
   return (
     <HeaderContainer>

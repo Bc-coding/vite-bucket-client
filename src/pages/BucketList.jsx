@@ -15,6 +15,7 @@ import { QueryResult } from "../components/index";
 import styled from "@emotion/styled";
 import AuthContext from "../context/authContext";
 import IdeaCard from "../components/IdeaCard";
+import { ReactComponent as CurlyArrow } from "../assets/curved-arrow.svg";
 
 const BucketList = () => {
   // CONTEXT
@@ -51,10 +52,18 @@ const BucketList = () => {
             </SimpleGrid>
           </QueryResult>
         ) : (
-          <Heading>
-            Hey, let's create your first bucket list item by clicking on the
-            button above
-          </Heading>
+          <>
+            <Stack spacing={6}>
+              <CurlyArrow iconName='curlyArrow' />
+              <Heading fontSize='4xl'>
+                Your bucket list is currently empty
+              </Heading>
+              <Text fontSize='2xl'>
+                Let's create your first bucket list item by clicking the button
+                above
+              </Text>
+            </Stack>
+          </>
         )}
       </Layout>
     );

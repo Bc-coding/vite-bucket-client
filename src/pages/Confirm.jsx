@@ -39,7 +39,7 @@ export default function Confirm() {
         <ConfirmContainer>
           <Stack spacing={3}>
             <Text fontSize='6xl'>Hi! 👋</Text>
-            <Text fontSize='5xl'>Account confirmed</Text>
+            <Text fontSize='5xl'>Your account has been verified</Text>
             <Text fontSize='2xl'>
               Please
               <LinkSpan>

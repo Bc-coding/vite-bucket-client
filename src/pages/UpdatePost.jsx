@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 import { useForm } from "react-hook-form";
@@ -33,6 +33,9 @@ const UpdatePost = () => {
   let history = useHistory();
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const [show, setShow] = useState(true);
+  const handleFocus = () => setShow(!show);
+
   const {
     loading: getPostLoading,
     error: getPostError,
@@ -44,7 +47,7 @@ const UpdatePost = () => {
         postId: postId,
       },
     },
-    onCompleted: data => {
+    onCompleted: (data) => {
       //console.log("completed fetching: ", data);
 
       setValue("title", data.getPostBucketList.post.title);
@@ -71,7 +74,7 @@ const UpdatePost = () => {
     UPDATE_BUCKET_LIST_BY_USER,
     // to observe what the mutation response returns
     {
-      onCompleted: data => {
+      onCompleted: (data) => {
         console.log("completed: ", data);
         history.push(`/post/${data.updateBucketList.post.id}`);
       },
@@ -86,7 +89,7 @@ const UpdatePost = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = values => {
+  const onSubmit = (values) => {
     console.log(values);
     const newValues = {
       ...values,
@@ -122,36 +125,36 @@ const UpdatePost = () => {
         >
           <FormContainer>
             <Flex
-              flexDirection="column"
-              width="100wh"
-              height="100vh"
-              paddingTop="80px"
-              alignItems="center"
+              flexDirection='column'
+              width='100wh'
+              height='100vh'
+              paddingTop='80px'
+              alignItems='center'
               bg={colorMode === "light" ? "white" : "gray.800"}
-              borderRadius="8px"
+              borderRadius='8px'
             >
               <Stack
-                flexDir="column"
-                mb="2"
-                justifyContent="center"
-                alignItems="center"
+                flexDir='column'
+                mb='2'
+                justifyContent='center'
+                alignItems='center'
               >
-                <Heading color="pink.400">Edit your bucket idea</Heading>
+                <Heading color='pink.400'>Edit your bucket idea</Heading>
                 <Box minW={{ base: "90%", md: "468px" }}>
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <Stack spacing={4} p="1rem" boxShadow="md">
+                    <Stack spacing={4} p='1rem' boxShadow='md'>
                       <FormControl isInvalid={errors.email}>
                         <InputGroup>
                           <InputLeftElement
-                            pointerEvents="none"
+                            pointerEvents='none'
                             children={<Icon as={FcIdea} />}
                           />
                           {/* register your input into the hook by invoking the "register" function */}
                           <Input
                             required
-                            id="title"
-                            name="title"
-                            type="title"
+                            id='title'
+                            name='title'
+                            type='title'
                             placeholder={"Title"}
                             autoFocus
                             {...register("title")}
@@ -161,17 +164,16 @@ const UpdatePost = () => {
                       <FormControl>
                         <InputGroup>
                           <InputLeftElement
-                            pointerEvents="none"
+                            pointerEvents='none'
                             children={<Icon as={FcOrganization} />}
                           />
                           {/* register your input into the hook by invoking the "register" function */}
                           <Input
                             required
-                            id="category"
-                            name="category"
-                            type="category"
+                            id='category'
+                            name='category'
+                            type='category'
                             placeholder={"category"}
-                            autoFocus
                             {...register("category")}
                           />
                         </InputGroup>
@@ -179,17 +181,16 @@ const UpdatePost = () => {
                       <FormControl>
                         <InputGroup>
                           <InputLeftElement
-                            pointerEvents="none"
+                            pointerEvents='none'
                             children={<Icon as={FcGlobe} />}
                           />
                           {/* register your input into the hook by invoking the "register" function */}
                           <Input
                             required
-                            id="location"
-                            name="location"
-                            type="location"
+                            id='location'
+                            name='location'
+                            type='location'
                             placeholder={"Location"}
-                            autoFocus
                             {...register("location")}
                           />
                         </InputGroup>
@@ -197,16 +198,15 @@ const UpdatePost = () => {
                       <FormControl>
                         <InputGroup>
                           <InputLeftElement
-                            pointerEvents="none"
+                            pointerEvents='none'
                             children={<Icon as={FcCloseUpMode} />}
                           />
                           {/* register your input into the hook by invoking the "register" function */}
                           <Input
-                            id="emoji"
-                            name="emoji"
-                            type="emoji"
+                            id='emoji'
+                            name='emoji'
+                            type='emoji'
                             placeholder={"Paste an emoji"}
-                            autoFocus
                             {...register("emoji")}
                           />
                         </InputGroup>
@@ -214,16 +214,16 @@ const UpdatePost = () => {
                       <FormControl>
                         <InputGroup>
                           <InputLeftElement
-                            pointerEvents="none"
+                            pointerEvents='none'
                             children={<Icon as={FcCalendar} />}
                           />
                           {/* register your input into the hook by invoking the "register" function */}
                           <Input
-                            id="date"
-                            name="date"
-                            type="date"
-                            placeholder="The date of completion"
-                            autoFocus
+                            id='date'
+                            name='date'
+                            type={show ? "text" : "date"}
+                            placeholder='The date of completion'
+                            onFocus={handleFocus}
                             {...register("date")}
                           />
                         </InputGroup>
@@ -231,19 +231,18 @@ const UpdatePost = () => {
                       <FormControl>
                         <Textarea
                           placeholder={"A brief decription"}
-                          id="desc"
-                          name="desc"
-                          type="decs"
-                          autoFocus
+                          id='desc'
+                          name='desc'
+                          type='decs'
                           {...register("desc")}
                         />
                       </FormControl>
                       <Button
                         borderRadius={0}
-                        type="submit"
-                        variant="solid"
-                        colorScheme="pink"
-                        width="full"
+                        type='submit'
+                        variant='solid'
+                        colorScheme='pink'
+                        width='full'
                         isLoading={isSubmitting}
                       >
                         Submit

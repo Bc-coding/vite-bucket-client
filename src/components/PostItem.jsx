@@ -39,6 +39,8 @@ const PostItem = ({ post }) => {
 
   const dateCreatedAt = new Date(parseInt(createdAt));
 
+  console.log(date);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [handlePostDelete] = useMutation(DELETE_POST_BY_USER, {
@@ -111,14 +113,17 @@ const PostItem = ({ post }) => {
             </IconAndLabel>
             <IconAndLabel>
               <div id='created-at'>
-                Created at: {dateCreatedAt.toISOString().split("T")[0]}
+                {/* Created at: {dateCreatedAt.toISOString().split("T")[0]} */}
+                Created at: {new Intl.DateTimeFormat().format(dateCreatedAt)}
               </div>
             </IconAndLabel>
             <IconAndLabel>
               <div id='completed'>Completed: {date ? <FcOk /> : "No"}</div>
             </IconAndLabel>
             <IconAndLabel>
-              <div id='date'>Date of completion: {date}</div>
+              <div id='date'>
+                Date of completion: {date ? date.replaceAll('"', "") : null}
+              </div>
             </IconAndLabel>
           </DetailItem>
           {/* <DetailItem>

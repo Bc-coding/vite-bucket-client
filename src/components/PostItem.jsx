@@ -39,8 +39,6 @@ const PostItem = ({ post }) => {
 
   const dateCreatedAt = new Date(parseInt(createdAt));
 
-  console.log(date);
-
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [handlePostDelete] = useMutation(DELETE_POST_BY_USER, {

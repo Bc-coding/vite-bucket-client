@@ -53,11 +53,20 @@ const AddPost = () => {
   } = useForm();
 
   const onSubmit = (values) => {
-    // console.log(values);
+    console.log(values);
+    const newValues = {
+      ...values,
+      title: values?.title?.charAt(0).toUpperCase() + values?.title.slice(1),
+      category:
+        values?.category?.charAt(0).toUpperCase() + values?.category.slice(1),
+      location:
+        values?.location?.charAt(0).toUpperCase() + values?.location.slice(1),
+      desc: values?.desc?.charAt(0).toUpperCase() + values?.desc.slice(1),
+    };
     handleBucketListCreate({
       variables: {
         input: {
-          ...values,
+          ...newValues,
         },
       },
     });

@@ -95,13 +95,26 @@ const UpdatePost = () => {
   } = useForm();
 
   const onSubmit = (values) => {
-    const newDateCompletion = JSON.stringify(
-      new Intl.DateTimeFormat().format(new Date(values.date))
-    );
+    let newDateCompletion;
+    if (values.date) {
+      newDateCompletion = JSON.stringify(
+        new Intl.DateTimeFormat().format(new Date(values.date))
+      );
+    }
+
+    console.log(values);
     const newValues = {
       ...values,
+      title: values?.title?.charAt(0).toUpperCase() + values?.title.slice(1),
+      category:
+        values?.category?.charAt(0).toUpperCase() + values?.category.slice(1),
+      location:
+        values?.location?.charAt(0).toUpperCase() + values?.location.slice(1),
       date: newDateCompletion,
+      desc: values?.desc?.charAt(0).toUpperCase() + values?.desc.slice(1),
     };
+
+    console.log(newValues);
 
     handleBucketListUpdate({
       variables: {

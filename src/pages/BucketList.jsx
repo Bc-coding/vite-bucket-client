@@ -8,6 +8,7 @@ import {
   Link,
   Stack,
 } from "@chakra-ui/react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import Layout from "../components/Layout";
 import { useQuery, useLazyQuery } from "@apollo/client";
 import { READ_ALL_BUCKET_LIST_BY_USER } from "../queries/index";
@@ -96,21 +97,25 @@ const BucketList = () => {
           data={readAllListData}
         >
           {readAllListData?.readAllBucketList.posts.length > 0 ? (
-            <SimpleGrid
-              spacing={4}
-              templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
-            >
-              <IdeaCardCollection currentItems={currentItems} />
-              <ReactPaginate
-                breakLabel='...'
-                nextLabel='next >'
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
-                pageCount={pageCount}
-                previousLabel='< previous'
-                renderOnZeroPageCount={null}
-              />
-            </SimpleGrid>
+            <>
+              <SimpleGrid
+                spacing={4}
+                templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
+              >
+                <IdeaCardCollection currentItems={currentItems} />
+              </SimpleGrid>
+              <ReactPaginateWrapper>
+                <ReactPaginate
+                  breakLabel='...'
+                  nextLabel={<ChevronRightIcon />}
+                  onPageChange={handlePageClick}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  previousLabel={<ChevronLeftIcon />}
+                  renderOnZeroPageCount={null}
+                />
+              </ReactPaginateWrapper>
+            </>
           ) : (
             <EmptyBucketMsg />
           )}
@@ -127,3 +132,32 @@ export default BucketList;
 const ButtonWrapper = styled.div({
   marginBottom: "30px",
 });
+
+const ReactPaginateWrapper = styled("div")`
+  margin: 40px 0;
+  width: 100%;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+
+    > li:not(:first-child, :last-child) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    > li.selected {
+      background: #879dd4;
+      color: white;
+    }
+
+    > li:hover:not(.active, :first-child, :last-child) {
+      background-color: #f1f4f9;
+    }
+  }
+`;

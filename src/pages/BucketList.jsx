@@ -53,7 +53,7 @@ const BucketList = () => {
   // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + 9;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = readAllListData?.readAllBucketList.posts.slice(
+  const currentItems = readAllListData?.readAllBucketList?.posts?.slice(
     itemOffset,
     endOffset
   );

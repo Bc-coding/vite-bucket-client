@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { LoadingSpinner } from "@apollo/space-kit/Loaders/LoadingSpinner";
+import NotFoundPage from "./NotFoundPage";
 
 /**
  * Query Results conditionally renders Apollo useQuery hooks states:
@@ -8,7 +9,7 @@ import { LoadingSpinner } from "@apollo/space-kit/Loaders/LoadingSpinner";
  */
 const QueryResult = ({ loading, error, data, children }) => {
   if (error) {
-    return <p>ERROR: {error.message}</p>;
+    return <NotFoundPage />;
   }
   if (loading) {
     return (

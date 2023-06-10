@@ -14,7 +14,6 @@ const Post = () => {
     loading: getPostLoading,
     error: getPostError,
     data: getPostData,
-    refetch,
   } = useQuery(GET_POST_BY_USER, {
     variables: {
       input: {

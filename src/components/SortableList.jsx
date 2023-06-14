@@ -1,6 +1,8 @@
 import { useState, useContext } from "react";
 import {
   SimpleGrid,
+  Select,
+  Box,
 } from "@chakra-ui/react";
 import IdeaCardCollection from "./IdeaCardCollection";
 import styled from "@emotion/styled";
@@ -61,14 +63,13 @@ function SortableList({ items }) {
   };
   return (
     <>
-      <label>
-        Sort by:
-        <select value={sortOption} onChange={handleSortOptionChange}>
+      <Box mb='8'>
+        <Select value={sortOption} onChange={handleSortOptionChange}>
           <option value="title">Title</option>
           <option value="date">Date</option>
           <option value="createdAt">CreatedAt</option>
-        </select>
-      </label>
+        </Select>
+      </Box>
       <SimpleGrid
         spacing={4}
         templateColumns='repeat(auto-fill, minmax(200px, 1fr))'
@@ -94,16 +95,16 @@ export default SortableList;
 
 
 const ReactPaginateWrapper = styled("div")`
-  margin: 40px 0;
-  width: 100%;
+      margin: 40px 0;
+      width: 100%;
 
-  ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
+      ul {
+        list - style - type: none;
+      display: flex;
+      justify-content: space-between;
 
     > li:not(:first-child, :last-child) {
-      display: flex;
+        display: flex;
       justify-content: center;
       align-items: center;
       width: 30px;
@@ -112,12 +113,12 @@ const ReactPaginateWrapper = styled("div")`
     }
 
     > li.selected {
-      background: #879dd4;
+        background: #879dd4;
       color: white;
     }
 
     > li:hover:not(.active, :first-child, :last-child) {
-      background-color: #f1f4f9;
+        background - color: #f1f4f9;
     }
   }
-`;
+      `;

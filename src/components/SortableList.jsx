@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 import {
   SimpleGrid,
   Select,
@@ -12,10 +12,15 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 function SortableList({ items }) {
   const [sortOption, setSortOption] = useState("date");
+  const [filterOption, setFilterOption] = useState("all");
 
   const handleSortOptionChange = (event) => {
     setSortOption(event.target.value);
   };
+
+  const handleFilterOptionChange = (event) => {
+    setFilterOption(event.target.value);
+  }
 
   const sortItems = (items, sortOption) => {
     switch (sortOption) {
@@ -28,12 +33,26 @@ function SortableList({ items }) {
       default:
         return items;
     }
-
   }
 
-  const sortedItems = sortItems(items, sortOption);
+  const filterItems = (items, filterOption) => {
+    return items.filter((item) => {
+      switch (filterOption) {
+        case "all":
+          return true;
+        case "completed":
+          return item.completed === true;
+        case "incomplete":
+          return item.completed === false || item.completed === null;
+        default:
+          return true;
+      }
+    });
+  }
 
-  console.log(sortedItems)
+  const sortedItems = useMemo(() => sortItems(items, sortOption), [items, sortOption])
+
+  const filteredItems = useMemo(() => filterItems(sortedItems, filterOption), [sortedItems, filterOption])
 
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
@@ -43,25 +62,52 @@ function SortableList({ items }) {
   // (This could be items from props; or items loaded in a local state
   // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + 9;
-  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = sortedItems.slice(
+  //console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  const currentItems = filterItems(sortedItems, filterOption).slice(
     itemOffset,
     endOffset
   );
+
+  // Error handling: if the user requests a page that doesn't exist,
+  if (currentItems.length === 0 && filteredItems.length > 0) {
+    // If the current page has no items but there are items in the filtered list,
+    // adjust the item offset to the previous page.
+    const lastPageOffset = Math.floor(filteredItems.length / 9) * 9;
+    setItemOffset(lastPageOffset);
+  } else if (filteredItems.length === 0) {
+    // If there are no items in the filtered list, reset the item offset to 0.
+    setItemOffset(0);
+  }
+
+
   const pageCount = Math.ceil(
-    sortedItems.length / 9
+    filteredItems.length / 9
   );
+
+  // debounce function to prevent multiple clicks
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
+      timeoutId = setTimeout(() => {
+        func(...args)
+      }, delay)
+    }
+  }
 
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event) => {
+  const handlePageClick = debounce((event) => {
     const newOffset =
       (event.selected * 9) % sortedItems.length;
     // console.log(
     //   `User requested page number ${event.selected}, which is offset ${newOffset}`
     // );
     setItemOffset(newOffset);
-  };
+  }, 500);
+
   return (
     <>
       <Flex mb='8'>
@@ -70,10 +116,10 @@ function SortableList({ items }) {
           <option value="date">Date</option>
           <option value="createdAt">CreatedAt</option>
         </Select>
-        <Select maxWidth={235} value={sortOption} onChange={handleSortOptionChange}>
-          <option value="title">Title</option>
-          <option value="date">Date</option>
-          <option value="createdAt">CreatedAt</option>
+        <Select maxWidth={235} value={filterOption} onChange={handleFilterOptionChange}>
+          <option value="all">All</option>
+          <option value="incomplete">Incomplete</option>
+          <option value="completed">Completed</option>
         </Select>
       </Flex>
       <SimpleGrid

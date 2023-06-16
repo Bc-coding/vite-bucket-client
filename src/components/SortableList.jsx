@@ -3,6 +3,7 @@ import {
   SimpleGrid,
   Select,
   Box,
+  Flex
 } from "@chakra-ui/react";
 import IdeaCardCollection from "./IdeaCardCollection";
 import styled from "@emotion/styled";
@@ -63,13 +64,18 @@ function SortableList({ items }) {
   };
   return (
     <>
-      <Box mb='8'>
-        <Select value={sortOption} onChange={handleSortOptionChange}>
+      <Flex mb='8'>
+        <Select mr='4' maxWidth={235} value={sortOption} onChange={handleSortOptionChange}>
           <option value="title">Title</option>
           <option value="date">Date</option>
           <option value="createdAt">CreatedAt</option>
         </Select>
-      </Box>
+        <Select maxWidth={235} value={sortOption} onChange={handleSortOptionChange}>
+          <option value="title">Title</option>
+          <option value="date">Date</option>
+          <option value="createdAt">CreatedAt</option>
+        </Select>
+      </Flex>
       <SimpleGrid
         spacing={4}
         templateColumns='repeat(auto-fill, minmax(200px, 1fr))'

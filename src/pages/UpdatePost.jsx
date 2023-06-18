@@ -147,7 +147,7 @@ const UpdatePost = () => {
             <Flex
               flexDirection='column'
               width='100wh'
-              height='100vh'
+              paddingBottom="80px"
               paddingTop='80px'
               alignItems='center'
               bg={colorMode === "light" ? "white" : "gray.800"}
@@ -283,7 +283,6 @@ export default UpdatePost;
 
 const Section = styled.div({
   width: "100%",
-  minHeight: "800px",
   borderRadius: "8px",
   backgroundColor: "pink",
   display: "flex",

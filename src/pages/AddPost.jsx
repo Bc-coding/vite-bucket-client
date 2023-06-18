@@ -87,6 +87,7 @@ const AddPost = () => {
             width='100wh'
             height='100vh'
             paddingTop='80px'
+            paddingBottom='80px'
             alignItems='center'
             bg={colorMode === "light" ? "white" : "gray.800"}
             borderRadius='8px'
@@ -221,7 +222,6 @@ export default AddPost;
 
 const Section = styled.div({
   width: "100%",
-  minHeight: "800px",
   borderRadius: "8px",
   backgroundColor: "pink",
   display: "flex",

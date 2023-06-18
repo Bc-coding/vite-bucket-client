@@ -85,7 +85,6 @@ const AddPost = () => {
           <Flex
             flexDirection='column'
             width='100wh'
-            height='100vh'
             paddingTop='80px'
             paddingBottom='80px'
             alignItems='center'

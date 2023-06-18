@@ -184,13 +184,6 @@ const PostItem = ({ post }) => {
 
 export default PostItem;
 
-const CoverImage = styled.img({
-  objectFit: "cover",
-  maxHeight: 400,
-  width: "100%",
-  borderRadius: 4,
-  marginBottom: 30,
-});
 
 const ContainerGradient = styled.div((props) => ({
   display: "flex",
@@ -249,23 +242,6 @@ const DetailItem = styled.div({
   },
 });
 
-// const StyledLink= styled(Link)({
-//   textDecoration: "none",
-//   color: "white",
-// });
-
-const AuthorImage = styled.img({
-  height: 30,
-  width: 30,
-  marginBottom: 8,
-  borderRadius: "50%",
-  objectFit: "cover",
-});
-
-const AuthorName = styled.div({
-  lineHeight: "1em",
-  fontSize: "1em",
-});
 
 const IconAndLabel = styled.div({
   display: "flex",

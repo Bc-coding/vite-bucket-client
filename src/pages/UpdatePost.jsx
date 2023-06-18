@@ -289,6 +289,7 @@ const Section = styled.div({
   justifyContent: "center",
   alignItems: "center",
   padding: "60px 0",
+  marginBottom: "64px"
 });
 
 const FormContainer = styled.div({

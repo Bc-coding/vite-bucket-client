@@ -1,14 +1,12 @@
-import React from "react";
-import styled from "@emotion/styled";
-import Logo from "./header/Logo";
 
-/**
- * Footer is useless component to make our app look a little closer to a real website!
- */
+import styled from "@emotion/styled";
+
+
+
 const Footer = ({ children }) => {
   return (
     <FooterContainer>
-      <Logo />
+      <p>Hi</p>
     </FooterContainer>
   );
 };

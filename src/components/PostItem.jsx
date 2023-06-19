@@ -203,7 +203,7 @@ const PostDetails = styled.div({
   alignItems: "center",
   padding: 20,
   borderRadius: 4,
-  marginBottom: 30,
+  marginBottom: 88,
   border: `solid 1px lightgrey`,
 
   h1: {

@@ -1,12 +1,16 @@
 
 import styled from "@emotion/styled";
-
+import {
+  Text,
+} from "@chakra-ui/react";
 
 
 const Footer = ({ children }) => {
   return (
     <FooterContainer>
-      <p>Hi</p>
+      <Text><a href="mailto:buckettesting@hotmail.com?subject = Feedback&body = Message">
+        Send Feedback
+      </a></Text>
     </FooterContainer>
   );
 };
@@ -19,10 +23,9 @@ const FooterContainer = styled.div({
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
-  // color: "pink",
+  color: "hotpink",
   marginTop: 30,
   height: 100,
   // padding: 20,
-  backgroundColor: "white",
   borderTop: `solid 1px lightgrey`,
 });

@@ -3,7 +3,8 @@ import {
   SimpleGrid,
   Select,
   Box,
-  Flex
+  Flex,
+  Input
 } from "@chakra-ui/react";
 import IdeaCardCollection from "./IdeaCardCollection";
 import styled from "@emotion/styled";
@@ -13,6 +14,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 function SortableList({ items }) {
   const [sortOption, setSortOption] = useState("date");
   const [filterOption, setFilterOption] = useState("all");
+  const [searchTerm, setSearchTerm] = useState(""); // Add this state variable
 
   const handleSortOptionChange = (event) => {
     setSortOption(event.target.value);
@@ -20,6 +22,10 @@ function SortableList({ items }) {
 
   const handleFilterOptionChange = (event) => {
     setFilterOption(event.target.value);
+  }
+
+  const handleSearchTermChange = (event) => {
+    setSearchTerm(event.target.value)
   }
 
   const sortItems = (items, sortOption) => {
@@ -63,10 +69,11 @@ function SortableList({ items }) {
   // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + 9;
   //console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = filterItems(sortedItems, filterOption).slice(
-    itemOffset,
-    endOffset
-  );
+  const currentItems = useMemo(() => {
+    return filteredItems
+      .filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+      .slice(itemOffset, endOffset);
+  }, [filteredItems, itemOffset, searchTerm]);
 
   // Error handling: if the user requests a page that doesn't exist,
   if (currentItems.length === 0 && filteredItems.length > 0) {
@@ -121,6 +128,13 @@ function SortableList({ items }) {
           <option value="incomplete">Incomplete</option>
           <option value="completed">Completed</option>
         </Select>
+        <Input
+          ml="4"
+          maxWidth={235}
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={handleSearchTermChange} // Add this input element
+        />
       </Flex>
       <SimpleGrid
         spacing={4}

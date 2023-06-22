@@ -4,6 +4,7 @@ import { ReactComponent as CurlyArrow } from "../assets/curved-arrow.svg";
 
 export default function EmptyBucketMsg() {
   return (
+
     <Stack spacing={6}>
       <SVGTextWrapper>
         <CurlyArrow iconname='curlyArrow' fill='hotpink' />
@@ -13,9 +14,10 @@ export default function EmptyBucketMsg() {
       </SVGTextWrapper>
 
       <Heading fontSize='5xl'>Your bucket list is currently empty</Heading>
-    </Stack>
+    </Stack >
   );
 }
+
 
 const SVGTextWrapper = styled.div({
   display: "flex",

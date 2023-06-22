@@ -31,6 +31,7 @@ export default function LoginSignupMsg() {
 
 const LoginMsgContainer = styled.div({
   marginTop: "160px",
+  height: "65vh",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",

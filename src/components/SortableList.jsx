@@ -4,7 +4,9 @@ import {
   Select,
   Box,
   Flex,
-  Input
+  Input,
+  Text,
+  Progress
 } from "@chakra-ui/react";
 import IdeaCardCollection from "./IdeaCardCollection";
 import styled from "@emotion/styled";
@@ -41,7 +43,7 @@ function SortableList({ items }) {
     }
   }
 
-  const filterItems = (items, filterOption) => {
+  const applyFilter = (items, filterOption) => {
     return items.filter((item) => {
       switch (filterOption) {
         case "all":
@@ -58,7 +60,9 @@ function SortableList({ items }) {
 
   const sortedItems = useMemo(() => sortItems(items, sortOption), [items, sortOption])
 
-  const filteredItems = useMemo(() => filterItems(sortedItems, filterOption), [sortedItems, filterOption])
+  const filteredItems = useMemo(() => applyFilter(sortedItems, filterOption), [sortedItems, filterOption])
+
+  const completedItems = useMemo(() => filteredItems.filter((item) => item.completed), [filteredItems])
 
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
@@ -117,6 +121,13 @@ function SortableList({ items }) {
 
   return (
     <>
+
+      <Box mb='8'>
+        <Progress value={completedItems.length} max={filteredItems.length} colorScheme='pink' size='sm' />
+        <Text>
+          ✨ {completedItems.length} out of {filteredItems.length} items completed
+        </Text>
+      </Box>
       <Flex mb='8'>
         <Select mr='4' maxWidth={235} value={sortOption} onChange={handleSortOptionChange}>
           <option value="title">Title</option>
